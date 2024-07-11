@@ -27,26 +27,53 @@ curl_close($ch);
     <meta name="author" content="Lucas Fabiani">
     <meta name="keywords" content="marvel, proxima pelicula">
 
-    <link rel="stylesheet" href="css/pico.min.css" />
+    <link rel="stylesheet" href="pico.min.css" />
 
     <style>
         :root {
             color-scheme: light dark;
         }
 
-        body, main {
+        body,
+        main {
             padding: 2rem;
             display: flex;
             justify-content: center;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
         }
-        
+
         hgroup {
             margin-left: 2rem;
         }
 
+        img {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1 {
+            color: #f33454;
+        }
+
+        h1:hover {
+            color: white;
+            cursor: pointer;
+        }
+
+        h2,
+        p {
+            margin-bottom: 1rem;
+            user-select: none;
+        }
+
+
         @media screen and (max-width: 500px) {
-            body, main {
+
+            body,
+            main {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
@@ -59,9 +86,11 @@ curl_close($ch);
     <main>
         <img width="300px" style="border-radius: 1rem" src="<?= $datos['poster_url']; ?>">
         <hgroup>
-            <h1 style="color: gray"><?= $datos['title']; ?></h1>
+            <a href="https://www.google.com/search?q=<?= urlencode($datos['title']) ?>">
+                <h1><?= $datos['title']; ?></h1>
+            </a>
             <h2>Faltan <?= $datos['days_until']; ?> dias para el estreno</h2>
-            <p style="color: gray"><?= $datos['overview']; ?></p>
+            <p><?= $datos['overview']; ?></p>
         </hgroup>
     </main>
 
